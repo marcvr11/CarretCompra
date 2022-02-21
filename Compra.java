@@ -1,3 +1,8 @@
+/**
+ * @Author Marc Valls
+ * @since 21/02/2022
+ * @version 1.0
+ */
 package com.company;
 
 import java.time.DateTimeException;
@@ -7,7 +12,9 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
-
+/**
+ * clase compra s'utilitza per guardar totes les funcions que serveixen per tractar amb la llista de la compra.
+ */
 public class Compra {
 	public static final String NOM_SUPERMERCAT = "SAPAMERCAT";
 	private static Scanner sc = new Scanner(System.in); 
@@ -16,6 +23,9 @@ public class Compra {
 	private List<Electronica> llista_elec;
 	private List<Textil> llista_textil;
 
+	/**
+	 * Funcio que serveix per crear Arrays per guardar els productes.
+	 */
 	public Compra() {
 		llista_ali = new ArrayList<Alimentacio>();
 		llista_elec = new ArrayList<Electronica>();
@@ -63,6 +73,10 @@ public class Compra {
 
 	}
 
+	/**
+	 * Funció que s'utilitza per mostrar el menu principal.
+	 * @return retorna un numero de tipus int que indica la opció triada per l'usuari.
+	 */
 	public int menuPrincipal() {
 		int op;
 		System.out.println("------------");
@@ -77,6 +91,10 @@ public class Compra {
 		return op;
 	}
 
+	/**
+	 * Funció que mostra el menu per introduir un producte.
+	 * @return retorna un valor de tipus int per indicar l'opcio indicada per l'usuari.
+	 */
 	public int menuProducte() {
 		int op;
 		System.out.println("---------------");
@@ -90,8 +108,10 @@ public class Compra {
 		op = Integer.parseInt(sc.nextLine());
 		return op;
 	}
-	
-	
+
+	/**
+	 * funció que s'utilitza per afegir a la llista de la compra un producte de tipus aliment.
+	 */
 	public void addAliment() {
 		String nom, codi;
 		float preu;
@@ -108,7 +128,10 @@ public class Compra {
 		LocalDate ld = readDate();
 		llista_ali.add(new Alimentacio(preu,nom,codi,ld));
 	}
-	
+
+	/**
+	 * funció que s'utilitza per afegir a la llista de la compra un producte de tipus Textil.
+	 */
 	public void addTextil() {
 		String nom, compo, codi;
 		float preu;
@@ -124,7 +147,10 @@ public class Compra {
 		
 		llista_textil.add(new Textil(preu,nom,codi,compo));	
 	}
-	
+
+	/**
+	 * funció que s'utilitza per afegir a la llista de la compra un producte de tipus Electronica.
+	 */
 	public void addElectronica() {
 		String nom,codi;
 		float preu;
@@ -143,6 +169,10 @@ public class Compra {
 	}
 	
 	//Llistar les tres llistes
+
+	/**
+	 * funció que s'utilitza per mostar la llista de la compra.
+	 */
 	public void printCarret() {
 		Map<String,Integer> llista = new HashMap<>();
 
@@ -175,7 +205,10 @@ public class Compra {
 		}*/
 
 	}
-	
+
+	/**
+	 * funcio que serveix per mostrar el tiquet de la compra una vegada ja has acabat de comprar.
+	 */
 	public void passarCaixa() {
 		double total = 0;
 		Set<Alimentacio> ali_uniq = new HashSet<Alimentacio>(llista_ali);
